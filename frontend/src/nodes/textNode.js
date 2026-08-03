@@ -14,7 +14,7 @@ export const TextNode = ({ id, data }) => {
 
   // Extract unique variables inside {{ }}
   const extractedVars = useMemo(() => {
-    const regex = /\{\{([a-zA-Z_$][a-zA-Z0-9_$]*)\}\}/g;
+    const regex = /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}\}/g;
     const matches = new Set();
     let match;
     while ((match = regex.exec(currText)) !== null) {
