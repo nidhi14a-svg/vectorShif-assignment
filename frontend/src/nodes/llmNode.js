@@ -4,7 +4,7 @@ import { Position } from 'reactflow';
 import { BaseNode } from './baseNode';
 import { BrainCircuit } from 'lucide-react';
 
-export const LLMNode = ({ id, data }) => {
+export const LLMNode = ({ id }) => {
   return (
     <BaseNode
       id={id}

@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 import { useState, useRef, useCallback } from 'react';
-import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
+import ReactFlow, { Controls, MiniMap } from 'reactflow';
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
 import { InputNode } from './nodes/inputNode';
@@ -57,8 +57,7 @@ export const PipelineUI = () => {
     } = useStore(selector, shallow);
 
     const getInitNodeData = (nodeID, type) => {
-      let nodeData = { id: nodeID, nodeType: `${type}` };
-      return nodeData;
+      return { id: nodeID, nodeType: type };
     }
 
     const onDrop = useCallback(

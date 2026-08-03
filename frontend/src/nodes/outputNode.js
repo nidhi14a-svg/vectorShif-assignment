@@ -7,7 +7,7 @@ import { LogOut } from 'lucide-react';
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
-  const [outputType, setOutputType] = useState(data.outputType || 'Text');
+  const [outputType, setOutputType] = useState(data?.outputType || 'Text');
 
   const handleNameChange = (e) => {
     setCurrName(e.target.value);
