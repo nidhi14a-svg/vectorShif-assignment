@@ -1,5 +1,7 @@
 // draggableNode.js
 
+import { ArrowRightSquare, BrainCircuit, LogOut, Type, Cloud, Settings2, Filter, Asterisk, Code } from 'lucide-react';
+
 export const DraggableNode = ({ type, label }) => {
     const onDragStart = (event, nodeType) => {
       const appData = { nodeType }
@@ -8,25 +10,31 @@ export const DraggableNode = ({ type, label }) => {
       event.dataTransfer.effectAllowed = 'move';
     };
   
+    // Assign colors based on node type for the border hover effect
+    const typeConfig = {
+      customInput: { color: 'var(--accent-blue)', Icon: ArrowRightSquare },
+      llm: { color: 'var(--accent-purple)', Icon: BrainCircuit },
+      customOutput: { color: 'var(--accent-emerald)', Icon: LogOut },
+      text: { color: 'var(--accent-indigo)', Icon: Type },
+      api: { color: 'var(--accent-cyan)', Icon: Cloud },
+      transform: { color: 'var(--accent-orange)', Icon: Settings2 },
+      filter: { color: 'var(--accent-yellow)', Icon: Filter },
+      regex: { color: 'var(--accent-pink)', Icon: Asterisk },
+      parse: { color: 'var(--accent-teal)', Icon: Code }
+    };
+    
+    const { color, Icon } = typeConfig[type] || { color: 'var(--text-main)', Icon: null };
+
     return (
       <div
-        className={type}
+        className={`draggable-module ${type}`}
         onDragStart={(event) => onDragStart(event, type)}
         onDragEnd={(event) => (event.target.style.cursor = 'grab')}
-        style={{ 
-          cursor: 'grab', 
-          minWidth: '80px', 
-          height: '60px',
-          display: 'flex', 
-          alignItems: 'center', 
-          borderRadius: '8px',
-          backgroundColor: '#1C2536',
-          justifyContent: 'center', 
-          flexDirection: 'column'
-        }} 
+        style={{ borderColor: color, boxShadow: `0 0 10px ${color}20` }}
         draggable
       >
-          <span style={{ color: '#fff' }}>{label}</span>
+          {Icon && <Icon size={20} color={color} />}
+          <span style={{ color: color, textShadow: `0 0 4px ${color}50` }}>{label}</span>
       </div>
     );
   };

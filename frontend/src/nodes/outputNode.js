@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './baseNode';
+import { LogOut } from 'lucide-react';
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
@@ -21,6 +22,8 @@ export const OutputNode = ({ id, data }) => {
       id={id}
       title="Output"
       handles={[{ type: 'target', position: Position.Left, id: 'value' }]}
+      accentColor="var(--accent-emerald)"
+      Icon={LogOut}
     >
       <label>
         Name:

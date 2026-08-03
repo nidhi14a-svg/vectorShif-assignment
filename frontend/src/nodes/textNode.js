@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './baseNode';
+import { Type } from 'lucide-react';
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
@@ -16,6 +17,8 @@ export const TextNode = ({ id, data }) => {
       id={id}
       title="Text"
       handles={[{ type: 'source', position: Position.Right, id: 'output' }]}
+      accentColor="var(--accent-indigo)"
+      Icon={Type}
     >
       <label>
         Text:

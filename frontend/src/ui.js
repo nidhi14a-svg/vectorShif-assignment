@@ -28,6 +28,11 @@ const nodeTypes = {
   parse: ParseNode,
 };
 
+const defaultEdgeOptions = {
+    animated: true,
+    style: { stroke: 'var(--accent-blue)', strokeWidth: 2, filter: 'drop-shadow(0 0 4px rgba(0, 240, 255, 0.5))' }
+};
+
 const selector = (state) => ({
   nodes: state.nodes,
   edges: state.edges,
@@ -110,10 +115,15 @@ export const PipelineUI = () => {
                 proOptions={proOptions}
                 snapGrid={[gridSize, gridSize]}
                 connectionLineType='smoothstep'
+                defaultEdgeOptions={defaultEdgeOptions}
             >
-                <Background color="#aaa" gap={gridSize} />
-                <Controls />
-                <MiniMap />
+                {/* Removed standard Background to let the CSS circuit board pattern show through */}
+                <Controls style={{ button: { backgroundColor: '#10121b', color: '#00f0ff', borderColor: '#1e293b' } }}/>
+                <MiniMap 
+                    nodeColor={(n) => '#00f0ff'}
+                    maskColor="rgba(10, 10, 15, 0.7)"
+                    style={{ backgroundColor: '#10121b', border: '1px solid #1e293b' }}
+                />
             </ReactFlow>
         </div>
         </>

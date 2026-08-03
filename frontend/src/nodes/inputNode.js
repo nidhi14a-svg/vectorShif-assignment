@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './baseNode';
+import { ArrowRightSquare } from 'lucide-react';
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
@@ -21,6 +22,8 @@ export const InputNode = ({ id, data }) => {
       id={id}
       title="Input"
       handles={[{ type: 'source', position: Position.Right, id: 'value' }]}
+      accentColor="var(--accent-blue)"
+      Icon={ArrowRightSquare}
     >
       <label>
         Name:

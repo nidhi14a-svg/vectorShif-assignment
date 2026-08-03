@@ -1,8 +1,7 @@
-// exampleNodes.js
-
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './baseNode';
+import { Cloud, Settings2, Filter, Asterisk, Code } from 'lucide-react';
 
 export const ApiNode = ({ id, data }) => {
   const [endpoint, setEndpoint] = useState(data?.endpoint || 'https://api.example.com');
@@ -15,6 +14,8 @@ export const ApiNode = ({ id, data }) => {
         { type: 'target', position: Position.Left, id: 'request' },
         { type: 'source', position: Position.Right, id: 'response' }
       ]}
+      accentColor="var(--accent-cyan)"
+      Icon={Cloud}
     >
       <label>
         Endpoint:
@@ -37,6 +38,8 @@ export const TransformNode = ({ id }) => {
         { type: 'target', position: Position.Left, id: 'input' },
         { type: 'source', position: Position.Right, id: 'output' }
       ]}
+      accentColor="var(--accent-orange)"
+      Icon={Settings2}
     >
       <span>Transforms data.</span>
     </BaseNode>
@@ -54,6 +57,8 @@ export const FilterNode = ({ id, data }) => {
         { type: 'target', position: Position.Left, id: 'input' },
         { type: 'source', position: Position.Right, id: 'output' }
       ]}
+      accentColor="var(--accent-yellow)"
+      Icon={Filter}
     >
       <label>
         Criteria:
@@ -78,6 +83,8 @@ export const RegexNode = ({ id, data }) => {
         { type: 'target', position: Position.Left, id: 'input' },
         { type: 'source', position: Position.Right, id: 'output' }
       ]}
+      accentColor="var(--accent-pink)"
+      Icon={Asterisk}
     >
       <label>
         Pattern:
@@ -102,6 +109,8 @@ export const ParseNode = ({ id, data }) => {
         { type: 'target', position: Position.Left, id: 'input' },
         { type: 'source', position: Position.Right, id: 'output' }
       ]}
+      accentColor="var(--accent-teal)"
+      Icon={Code}
     >
       <label>
         Format:

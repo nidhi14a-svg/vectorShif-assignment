@@ -1,23 +1,25 @@
 // baseNode.js
 
-import { Handle, Position } from 'reactflow';
+import { Handle } from 'reactflow';
 
-export const BaseNode = ({ id, title, handles = [], children }) => {
+export const BaseNode = ({ id, title, handles = [], children, accentColor = '#00f0ff', Icon }) => {
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
+    <div className="cyber-node" style={{ borderColor: accentColor, boxShadow: `0 0 15px ${accentColor}40` }}>
       {handles.map((handle, index) => (
         <Handle
           key={`${id}-${handle.id}-${index}`}
+          className="cyber-handle"
           type={handle.type}
           position={handle.position}
           id={`${id}-${handle.id}`}
-          style={handle.style || {}}
+          style={{ ...handle.style, color: accentColor, borderColor: accentColor }}
         />
       ))}
-      <div>
-        <span>{title}</span>
+      <div className="cyber-node-header" style={{ borderBottomColor: `${accentColor}40` }}>
+        {Icon && <Icon size={16} color={accentColor} />}
+        <span style={{ color: '#fff' }}>{title}</span>
       </div>
-      <div>
+      <div className="cyber-node-body">
         {children}
       </div>
     </div>
